@@ -19,4 +19,4 @@ My website portofolio with HTML, CSS &amp; JS
 <br>
 <br>
 <br>
-<br><img src="/images/prv6.png">
+<br><img src="/images/prv4.png">
