@@ -15,8 +15,8 @@ My website portofolio with HTML, CSS &amp; JS
 <br>
 <br>
 <br>
-<br><img src="/images/prv4.png">
-<br>
-<br>
-<br>
 <br><img src="/images/prv5.png">
+<br>
+<br>
+<br>
+<br><img src="/images/prv4.png">
