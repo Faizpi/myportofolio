@@ -1,4 +1,4 @@
-# myportfolio
+# myportofolio
 My portofolio website with HTML, CSS &amp; JS
 <br>
 <br>
