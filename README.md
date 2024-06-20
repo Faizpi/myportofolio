@@ -1,5 +1,5 @@
 # myportofolio
-My portofolio website with HTML, CSS &amp; JS
+My website portofolio with HTML, CSS &amp; JS
 <br>
 <br>
 <img src="/images/prv1.png">
