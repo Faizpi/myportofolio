@@ -81,33 +81,78 @@ section {
     background-attachment: fixed;
 }
 
-.main h2 {
-    color: #ffffff;
-    font-weight: 500;
-    font-size: 1.4em;
-}
-
-.text h4 {
-    color: rgb(173, 173, 173);
-}
-
-.main h2 span {
-    color: #e1a20f;
-    font-size: 2em;
-    font-weight: 600;
-    display: inline-block;
-    margin-top: 10px;
+.text {
     position: relative;
-}
-
-.main h3 {
-    color: #fff;
-    font-size: 2em;
-    font-weight: 700;
-    letter-spacing: 1px;
-    margin-top: 10px;
-    margin-bottom: 30px;
-}
+    overflow: hidden;
+    width: 100%;
+    padding: 20px;
+  }
+  
+  .text h2, .text h3, .text h4 {
+    opacity: 0;
+    position: relative;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-in-out;
+  }
+  
+  .main h2 {
+      color: #ffffff;
+      font-weight: 500;
+      font-size: 1.4em;
+      animation-name: slideInLeft;
+      animation-delay: 0s;
+  }
+  
+  .text h4 {
+      color: rgb(173, 173, 173);
+      animation-name: slideInRight;
+      animation-delay: 1s;
+  }
+  
+  .main h2 span {
+      color: #e1a20f;
+      font-size: 2em;
+      font-weight: 600;
+      display: inline-block;
+      margin-top: 10px;
+      position: relative;
+      animation-name: slideInRight;
+      animation-delay: 2s;
+  }
+  
+  .main h3 {
+      color: #ffffff;
+      font-size: 2em;
+      font-weight: 700;
+      letter-spacing: 1px;
+      margin-top: 10px;
+      margin-bottom: 30px;
+      animation-name: slideInLeft;
+      animation-delay: 1s;
+  }
+  
+  @keyframes slideInLeft {
+    from {
+      left: -100%;
+      opacity: 0;
+    }
+    to {
+      left: 0;
+      opacity: 1;
+    }
+  }
+  
+  @keyframes slideInRight {
+    from {
+      right: -100%;
+      opacity: 0;
+    }
+    to {
+      right: 0;
+      opacity: 1;
+    }
+  }
 
 .main-btn {
     text-decoration: none;
@@ -120,7 +165,16 @@ section {
     letter-spacing: 1px;
     border-radius: 15px;
     margin-bottom: 40px;
-    transition: 0.7s ease;
+    transition: 1s ease;
+    position: relative;
+    opacity: 0; 
+    transform: translateY(-50px); 
+}
+
+.main-btn.show {
+    opacity: 1; 
+    transform: translateY(0); 
+    transition: opacity 2s ease-out, transform 1s ease-out; 
 }
 
 .main-btn:hover {
@@ -147,20 +201,69 @@ section {
 #about {
     background-color: #6f644e; 
     color: #faf7f7; 
-    padding: 20px; 
-  }
-  
-  #about h2 {
-    color: #ff9900;
+    padding: 32px; 
+    text-align: center;
+}
 
-  }
-  
-  #about p {
+#about h1 {
+    color: #ff9900;
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+#about p {
     color: #ffffff;
     margin-top: 10px;
     margin-bottom: 10px;
-  }
-  
+    font-size: 18px;
+}
+
+.about-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.photo-container {
+    position: relative;
+    width: 130px;
+    height: 150px;
+    margin-bottom: 20px;
+}
+
+.photo-container img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 5px solid #ff99002b;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    transition: transform 0.6s ease, box-shadow 0.3s ease;
+}
+
+.photo-container:hover img {
+    transform: rotateY(360deg);
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.6);
+}
+
+.vertical-line {
+    position: absolute;
+    top: 0;
+    left: 100%;
+    height: 100%;
+    width: 3px;
+    background-color: #fffefd;
+}
+
+.description {
+    max-width: 600px;
+    text-align: left;
+    margin-left: 20px;
+}
+
+
 
 .skills{
     background-color: #474035;
@@ -304,7 +407,7 @@ section {
 #contact {
     background-color:#1e1b15; 
     color: #333; 
-    padding: 20px; 
+    padding: 32; 
     text-align: center;
   }
   
@@ -424,7 +527,7 @@ section {
     position: fixed;
     right: 10px;
     bottom: 10px;
-    background: #ffffffb2;
+    background: hsla(0, 0%, 100%, 0);
     color: #fff;
     padding: 10px;
     border-radius: 50%;
@@ -438,7 +541,7 @@ section {
 }
 
 .btn-up:hover {
-    background: #060300;
+    background: #06030000;
 }
 
 .nav-toggle {
@@ -467,9 +570,9 @@ section {
     .navigation {
         display: none;
         flex-direction: column;
-        background: #ffffff;
+        background: #f0f0f0;
         position: absolute;
-        top: 50px;
+        top: 60px;
         left: 0;
         width: 100%;
     }
