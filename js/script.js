@@ -1,6 +1,11 @@
 document.addEventListener("DOMContentLoaded", function() {
     const btnUp = document.querySelector(".btn-up");
 
+    var button = document.querySelector('.main-btn');
+    setTimeout(function() {
+        button.classList.add('show');
+    }, 100);
+
     window.addEventListener("scroll", function() {
         if (window.scrollY > 300) {
             btnUp.classList.add("visible");
@@ -14,6 +19,16 @@ document.addEventListener("DOMContentLoaded", function() {
             top: 0,
             behavior: "smooth"
         });
+    });
+
+    const photoContainer = document.querySelector('.photo-container img');
+
+    photoContainer.addEventListener('mouseover', function() {
+        photoContainer.style.transform = 'rotateY(360deg)';
+    });
+
+    photoContainer.addEventListener('mouseout', function() {
+        photoContainer.style.transform = 'rotateY(0deg)';
     });
 
     const navToggle = document.createElement("div");
@@ -50,3 +65,4 @@ document.addEventListener("DOMContentLoaded", function() {
 
     animateOnScroll(); 
 });
+
