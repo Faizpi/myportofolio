@@ -1,4 +1,44 @@
 document.addEventListener("DOMContentLoaded", function() {
+
+    let cursorBackground = document.getElementById('cursor-background');
+let lastMouseX, lastMouseY, lastTimestamp;
+let targetSize = 30;
+let baseSize = 30; 
+let maxSize = 50;
+
+const updateCursor = () => {
+    const currentSize = parseFloat(cursorBackground.style.width);
+    const newSize = currentSize + (targetSize - currentSize) * 0.2;
+    cursorBackground.style.width = `${newSize}px`;
+    cursorBackground.style.height = `${newSize}px`;
+
+    requestAnimationFrame(updateCursor);
+};
+
+document.addEventListener('mousemove', (e) => {
+    let mouseX = e.clientX;
+    let mouseY = e.clientY;
+    let currentTime = performance.now();
+
+    if (lastMouseX !== undefined && lastMouseY !== undefined) {
+        let dx = mouseX - lastMouseX;
+        let dy = mouseY - lastMouseY;
+        let dt = currentTime - lastTimestamp;
+        let speed = Math.sqrt(dx * dx + dy * dy) / dt;
+
+        targetSize = Math.min(maxSize, baseSize + speed * 20);
+    }
+
+    cursorBackground.style.left = `${mouseX - cursorBackground.offsetWidth / 2}px`;
+    cursorBackground.style.top = `${mouseY - cursorBackground.offsetHeight / 2}px`;
+
+    lastMouseX = mouseX;
+    lastMouseY = mouseY;
+    lastTimestamp = currentTime;
+});
+
+requestAnimationFrame(updateCursor);
+
     const btnUp = document.querySelector(".btn-up");
 
     var button = document.querySelector('.main-btn');
